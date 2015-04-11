@@ -3,7 +3,7 @@
     <div class="col-md-4 column">
       <div class="form-area">
         <div class="form-group">
-          <label for="amount">Amount</label>
+          <label for="amount">Amount of cash</label>
           <div class="input-group">
             <!--<div class="amount-input">-->
               <div class="input-group-addon">$</div>
@@ -19,7 +19,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="valise">Prefered Valise</label>
+          <label for="valise">Preferred Valise(carrying case)</label>
           <select class="form-control" id="valise" ng-model="valise" ng-change="update()"
                   ng-options="opt as opt.label for opt in valises">
           </select>
@@ -31,7 +31,7 @@
         <h2>
           {{totalValises | number }}
           <ng-pluralize count="totalValises"
-                        when="{'0': '',
+                        when="{'0': ' ',
                        'one': ' {{valise.label}} ',
                        'other': ' {{valise.label}}s '}" number>
           </ng-pluralize> needed!
@@ -55,10 +55,10 @@
             <dd>{{bills["10"] || 0}}</dd>
             <dt>Twenties</dt>
             <dd>{{bills["20"] || 0}}</dd>
-            <dt>Hundred</dt>
+            <dt>Hundreds</dt>
             <dd>{{bills["100"] || 0}}</dd>
           </ul>
-          <dt>Volume of bills(Cubic In)</dt>
+          <dt>Volume of bills(in<sup>3</sup>)</dt>
           <dd>{{dollarSqIn | number }}</dd>
           <dt>Your Valise</dt>
           <dd>{{valise.label}}</dd>
