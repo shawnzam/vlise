@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-4 column">
+      <div class="form-area">
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          <div class="input-group">
+            <!--<div class="amount-input">-->
+              <div class="input-group-addon">$</div>
+              <input id="amount" type="text" ng-change="update()" class="form-control" ng-model="amount" currency-mask placeholder="Amount"/>
+              <div class="input-group-addon">.00</div>
+            </div>
+          <!--</div>-->
+        </div>
+        <div class="form-group">
+          <label for="denomination">Largest allowed denomination</label>
+          <select class="form-control" ng-model="denomination" name="denomination" id="denomination" ng-change="update()"
+            ng-options="opt as opt.label for opt in denominations">
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="valise">Prefered Valise</label>
+          <select class="form-control" id="valise" ng-model="valise" ng-change="update()"
+                  ng-options="opt as opt.label for opt in valises">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 column">
+      <div class="jumbotron">
+        <h2>
+          {{totalValises | number }}
+          <ng-pluralize count="totalValises"
+                        when="{'0': '',
+                       'one': ' {{valise.label}} ',
+                       'other': ' {{valise.label}}s '}" number>
+          </ng-pluralize> needed!
+        </h2>
+
+
+      </div>
+      <p class ="">
+        <span ng-repeat="i in getTotalValises() track by $index" class="glyphicon glyphicon-briefcase"></span>x{{multiplier | number}}
+      </p>
+      <div class="well">
+        <dl>
+          <dt>Total Bills</dt>
+          <dd>{{totalBills | number }}</dd>
+          <ul>
+            <dt>Ones</dt>
+            <dd>{{bills["1"] || 0}}</dd>
+            <dt>Fives</dt>
+            <dd>{{bills["5"] || 0}}</dd>
+            <dt>Tens</dt>
+            <dd>{{bills["10"] || 0}}</dd>
+            <dt>Twenties</dt>
+            <dd>{{bills["20"] || 0}}</dd>
+            <dt>Hundred</dt>
+            <dd>{{bills["100"] || 0}}</dd>
+          </ul>
+          <dt>Volume of bills(Cubic In)</dt>
+          <dd>{{dollarSqIn | number }}</dd>
+          <dt>Your Valise</dt>
+          <dd>{{valise.label}}</dd>
+        </dl>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
