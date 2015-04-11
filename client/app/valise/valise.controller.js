@@ -24,7 +24,6 @@ angular.module('valiseApp')
         tmpSum += Math.floor(remainder/tmpDenominations[i]);
         remainder = remainder % tmpDenominations[i];
       }
-      console.log(tmpSum);
       $scope.bills = ret;
       $scope.totalBills = tmpSum;
       $scope.dollarSqIn = config.dollar * tmpSum;
@@ -43,7 +42,6 @@ angular.module('valiseApp')
         return new Array($scope.displayValiseTotal());
       }
     }
-
     $scope.update();
   });
 
